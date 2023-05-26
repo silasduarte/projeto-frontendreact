@@ -7,7 +7,7 @@ import { useState } from 'react'
 function Home({
     productList,
     amount,
-    setAmout,
+    setAmount,
     cart,
     setCart,
 }) {
@@ -17,6 +17,30 @@ function Home({
         setOrdination(event.target.value)
 
     }
+    function addCart(product) {
+        const newProduct = cart.find(
+            (produto) => product.id === produto.id
+        )
+        if (newProduct === undefined) {
+            product = { ...product, quantidade: 1 }
+            setCart([...cart, product])
+
+            const valorTotal = amount + product.value
+            setAmount(valorTotal)
+        } else {
+            const novoCarrinho = cart.map((produto) => {
+                if (produto.id === newProduct.id) {
+                    const valorTotal = amount + product.value
+                    setAmount(valorTotal)
+                    return { ...newProduct, quantidade: produto.quantidade + 1 }
+                } else {
+                    return produto
+                }
+            })
+            setCart(novoCarrinho)
+        }
+    }
+    console.log("Valor total", amount)
     return (
         <>
             <HomeBox>
@@ -31,9 +55,13 @@ function Home({
                     </span>
                 </ProductBox>
                 <CardsBox>
-                    <ProductList productList={productList[0]} />
-                    <ProductList productList={productList[1]} />
-                    <ProductList productList={productList[2]} />
+                    {/* map = ira verificar tudo que tem dentro do array, junto com return ira retornar o que esta dentro do array */}
+                    {productList.map((product) => {
+                        return <ProductList
+                            productList={product}
+                            key={product.id}
+                            addAoCarrinho={addCart} />
+                    })}
                 </CardsBox>
             </HomeBox>
         </>

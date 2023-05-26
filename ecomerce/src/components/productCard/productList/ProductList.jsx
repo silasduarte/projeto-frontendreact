@@ -1,6 +1,6 @@
 import { CardBox, CardTexBox, Imagem } from "./productListStyle"
 
-function ProductList({ productList }) {
+function ProductList({ productList, addAoCarrinho }) {
 
     return (
         <>
@@ -9,7 +9,7 @@ function ProductList({ productList }) {
                 <CardTexBox>
                     <p>{productList.name}</p>
                     <p>R$ {productList.value}</p>
-                    <button>Adicionar item</button>
+                    <button onClick={() => addAoCarrinho(productList)}>Adicionar item</button>
                 </CardTexBox>
             </CardBox>
         </>
