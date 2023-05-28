@@ -1,4 +1,4 @@
-import { FilterBox } from "./filterStyle";
+import { FilterBox, Input } from "./filterStyle";
 function Filter({
   minFilter,
   setMinFilter,
@@ -36,7 +36,7 @@ function Filter({
         <label>
           Valor mínimo:
           <br />
-          <input type="number" value={minFilter} onChange={handMinFilter} />
+          <Input type="number" value={minFilter} onChange={handMinFilter} />
         </label>
 
         <br />
@@ -44,7 +44,7 @@ function Filter({
         <label>
           Valor maxímo:
           <br />
-          <input type="number" value={maxFilter} onChange={handMaxFilter} />
+          <Input type="number" value={maxFilter} onChange={handMaxFilter} />
         </label>
 
         <br />
@@ -52,7 +52,7 @@ function Filter({
         <label>
           Busca por nome:
           <br />
-          <input type="text" value={searchFilter} onChange={handSearchFilter} />
+          <Input type="text" value={searchFilter} onChange={handSearchFilter} />
         </label>
       </FilterBox>
     </>

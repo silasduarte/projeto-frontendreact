@@ -20,7 +20,7 @@ function Cart({ cart, amount, setCart, setAmount }) {
   return (
     <>
       <CartBox>
-        <p>Carrinho</p>
+        <h2>Carrinho</h2>
         {cart.map((product) => {
           return (
             <Item

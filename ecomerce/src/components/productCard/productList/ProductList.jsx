@@ -1,16 +1,24 @@
-import { CardBox, CardTexBox, Imagem } from "./productListStyle";
+import {
+  Button,
+  CardBox,
+  CardTexBox,
+  ImagBox,
+  Imagem,
+} from "./productListStyle";
 
 function ProductList({ productList, addAoCarrinho }) {
   return (
     <>
       <CardBox>
-        <Imagem src={productList.imageUrl} />
+        <ImagBox>
+          <Imagem src={productList.imageUrl} />
+        </ImagBox>
         <CardTexBox>
           <p>{productList.name}</p>
           <p>R$ {productList.value}</p>
-          <button onClick={() => addAoCarrinho(productList)}>
+          <Button onClick={() => addAoCarrinho(productList)}>
             Adicionar item
-          </button>
+          </Button>
         </CardTexBox>
       </CardBox>
     </>

@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 export const CartBox = styled.div`
-border:2px solid black;
-grid-column:7/8;
+  grid-column: 7/8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+  h2 {
+    font-size: 2rem;
+  }
 `;
