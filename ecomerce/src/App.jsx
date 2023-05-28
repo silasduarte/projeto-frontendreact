@@ -1,8 +1,9 @@
 import Filter from "./components/filters/Filter";
 import Home from "./components/productCard/home/Home";
 import Cart from "./components/shoppingCart/cart/Cart";
+import Header from "./components/header/Header";
 import GlobalStyles from "./GlobalStyles";
-import { AppCaixa } from "./appStyle";
+import { AppCaixa, AppStyle } from "./appStyle";
 import { productList } from "./assents/productsList";
 import { useEffect, useState } from "react";
 
@@ -32,9 +33,22 @@ function App() {
         })
     );
   }, [minFilter, maxFilter, searchFilter]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      localStorage.setItem("cart", JSON.stringify(cart));
+      localStorage.setItem("amount", JSON.stringify(amount));
+    }, 15);
+  }, [cart]);
+
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart")));
+    setAmount(JSON.parse(localStorage.getItem("amount")));
+  }, []);
   return (
-    <>
+    <AppStyle>
       <GlobalStyles />
+      <Header />
       <AppCaixa>
         <Filter
           minFilter={minFilter}
@@ -62,7 +76,7 @@ function App() {
           setCart={setCart}
         />
       </AppCaixa>
-    </>
+    </AppStyle>
   );
 }
 

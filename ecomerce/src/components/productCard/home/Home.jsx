@@ -1,5 +1,5 @@
 import ProductList from "../productList/ProductList";
-import { HomeBox } from "./homeStyle";
+import { HomeBox, Select, Option } from "./homeStyle";
 import { ProductBox } from "./homeStyle";
 import { CardsBox } from "./homeStyle";
 import { useEffect, useState } from "react";
@@ -16,7 +16,6 @@ function Home({
   setStarList,
 }) {
   const [ordination, setOrdination] = useState("");
-  console.log(listEstado, setListEstado);
   function handSelect(event) {
     setOrdination(event.target.value);
   }
@@ -87,11 +86,11 @@ function Home({
           <span>Quantidade de produtos:{productList.length}</span>
           <span>
             Ordernação:
-            <select value={ordination} onChange={handSelect}>
-              <option>Ordernar</option>
-              <option value="Crescente">Crescente</option>
-              <option value="Decrescente">Decrescente</option>
-            </select>
+            <Select value={ordination} onChange={handSelect}>
+              <Option>Ordernar</Option>
+              <Option value="Crescente">Crescente</Option>
+              <Option value="Decrescente">Decrescente</Option>
+            </Select>
           </span>
         </ProductBox>
         <CardsBox>
